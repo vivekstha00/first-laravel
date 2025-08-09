@@ -17,12 +17,12 @@
             </ul>
         </div>
     </div>
-
+    
     <div class="row g-4">
         <!-- Product Cards -->
         <div class="col-md-6 col-lg-4 col-xl-3">
             <div class="card h-100">
-                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product">
+                <img src="{{asset('web/assets/images/earbuds.jpg') }}" class="card-img-top" alt="Product">
                 <div class="card-body">
                     <h5 class="card-title">Wireless Earbuds Pro</h5>
                     <p class="card-text text-muted small">Active noise cancellation, 30hr battery</p>
@@ -36,7 +36,7 @@
 
         <div class="col-md-6 col-lg-4 col-xl-3">
             <div class="card h-100">
-                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product">
+                <img src="{{asset('web/assets/images/fintnesstracker.jpg') }}" class="card-img-top" alt="Product">
                 <div class="card-body">
                     <h5 class="card-title">Fitness Tracker</h5>
                     <p class="card-text text-muted small">Heart rate monitor, waterproof</p>
@@ -50,7 +50,7 @@
 
         <div class="col-md-6 col-lg-4 col-xl-3">
             <div class="card h-100">
-                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product">
+                <img src="{{asset('web/assets/images/charger.jpg') }}" class="card-img-top" alt="Product">
                 <div class="card-body">
                     <h5 class="card-title">Portable Charger</h5>
                     <p class="card-text text-muted small">10000mAh, fast charging</p>
@@ -64,7 +64,7 @@
 
         <div class="col-md-6 col-lg-4 col-xl-3">
             <div class="card h-100">
-                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product">
+                <img src="{{asset('web/assets/images/jbl.jpg') }}" class="card-img-top" alt="Product">
                 <div class="card-body">
                     <h5 class="card-title">Bluetooth Speaker</h5>
                     <p class="card-text text-muted small">360° sound, 20hr playtime</p>

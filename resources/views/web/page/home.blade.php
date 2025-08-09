@@ -14,7 +14,7 @@
         <div class="row g-4">
             <div class="col-md-4">
                 <div class="card">
-                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product">
+                    <img src="{{asset('web/assets/images/earbuds.jpg') }}" class="card-img-top" alt="Product">
                     <div class="card-body">
                         <h5>Wireless Earbuds</h5>
                         <p>Crystal clear sound, 20hr battery</p>
@@ -27,7 +27,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product">
+                    <img src="{{asset('web/assets/images/watch.jpg') }}" class="card-img-top" alt="Product">
                     <div class="card-body">
                         <h5>Smart Watch</h5>
                         <p>Fitness tracking & notifications</p>
@@ -40,7 +40,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product">
+                    <img src="{{asset('web/assets/images/bag.jpg') }}" class="card-img-top" alt="Product">
                     <div class="card-body">
                         <h5>Backpack</h5>
                         <p>Durable & waterproof</p>
