@@ -8,14 +8,22 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('web.page.dashboard');
+        return view('admin.page.dashboard');
     }
     public function create()
     {
-        return view('web.page.user');
+        // $users = User::latest{}->get{};
+        return view('admin.page.user');
     }
     public function show()
     {
-        return view('web.page.addUser');
+        return view('admin.page.addUser');
     }
+    // public function store(Request $request)
+    // {
+
+
+    // }
+
+    
 }
