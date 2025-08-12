@@ -1,33 +1,29 @@
+<!-- Sidebar
+<div class="col-md-3 col-lg-2 d-md-block bg-dark text-white vh-100 position-fixed p-3">
+    <h5 class="text-uppercase border-bottom pb-2">Admin Menu</h5>
+    <ul class="nav flex-column">
+        <li class="nav-item"><a class="nav-link text-white" href="{{ route('admin.page.dashboard') }}">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="{{ route('admin.page.index') }}">Users</a></li>
+    </ul>
+</div> -->
 <!-- Sidebar -->
-<div class="col-md-3 col-lg-2 d-md-block sidebar collapse">
-    <div class="position-sticky pt-3">
-        <h4 class="px-3 mb-3">Admin Panel</h4>
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
-                    <i class="bi bi-speedometer2 me-2"></i> Dashboard
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('user*') ? 'active' : '' }}" href="{{ route('user') }}">
-                    <i class="bi bi-people me-2"></i> Users
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('products*') ? 'active' : '' }}" href="#">
-                    <i class="bi bi-box-seam me-2"></i> Products
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('orders*') ? 'active' : '' }}" href="#">
-                    <i class="bi bi-cart me-2"></i> Orders
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('settings*') ? 'active' : '' }}" href="#">
-                    <i class="bi bi-gear me-2"></i> Settings
-                </a>
-            </li>
-        </ul>
+<div class="d-flex flex-column flex-shrink-0 p-3 bg-dark text-white" style="width: 250px; height: 100vh;">
+    <h5 class="text-uppercase border-bottom pb-2">Admin Menu</h5>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a href="{{ route('admin.page.dashboard') }}" 
+               class="nav-link text-white {{ request()->routeIs('admin.page.dashboard') ? 'active' : '' }}">
+                Dashboard
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('admin.page.index') }}" 
+               class="nav-link text-white {{ request()->routeIs('admin.page.index') ? 'active' : '' }}">
+                Users
+            </a>
+        </li>
+    </ul>
+    <div class="mt-auto pt-3 border-top">
+        <small class="text-muted">Hi, {{ Auth::user()->name ?? 'Guest' }}</small>
     </div>
 </div>

@@ -6,24 +6,29 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\DashboardController;
 
 Route::get('/', [HomeController::class, 'index']) ->name('home');
 
 Route::get('/product', [ProductController::class, 'index']) ->name('product');
-
 Route::get('/categories', [CategoriesController::class, 'index']) ->name('categories');
 
 Route::get('/about', [AboutController::class, 'index']) ->name('about');
-
 Route::get('/contact', [ContactController::class, 'index']) ->name('contact');
 
-Route::get('/dashboard', [AdminController::class, 'index']) ->name('dashboard');
+Route::get('/admin/dashboard', [DashboardController::class, 'index']) ->name('admin.page.dashboard');
 
-Route::get('/user', [AdminController::class, 'create']) ->name('user');
-
-Route::get('/addUser', [AdminController::class, 'show']) ->name('addUser');
-
-
+Route::prefix('admin/page')
+    ->as('admin.page.')
+    ->controller(UserController::class)
+    ->group(function () {
+        Route::get('/', [UserController::class, 'index']) ->name('index');
+        Route::get('/create', [UserController::class, 'create']) ->name('create');
+        Route::post('/', [UserController::class, 'store']) ->name('store');
+        Route::get('/{userId}', 'edit')->name('edit');
+        Route::put('/{userId}', 'update')->name('update');
+        Route::delete('/{userId}', 'delete')->name('delete');
+    });
 
 
