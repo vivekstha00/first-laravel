@@ -1,61 +1,65 @@
 @extends('admin.layouts.master')
 
 @section('admin-content')
+<body>
+    <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="margin-left: 16.666667%;">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Create Users</h2>
+        </div>
 
-<div class="p-4">
-    <h2>Create User</h2>
-
-    <form action="{{ route('admin.page.store') }}" method="POST">
-        @csrf
-        <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" name="name" id="name" class="form-control @error('email') is-invalid @enderror">
-            @error('name')
-            <div class="invalid-feedback">{{ $message }}
+                <form action="{{ route('admin.page.store') }}" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" name="name" id="name" class="form-control @error('email') is-invalid @enderror">
+                @error('name')
+                <div class="invalid-feedback">{{ $message }}
+                </div>
+                @enderror
             </div>
-            @enderror
-        </div>
 
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
-            @error('email')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
-
-
-        <div class="mb-3">
-            <label for="age" class="form-label">Age</label>
-            <input
-                type="number" name="age" id="age" class="form-control @error('age') is-invalid @enderror" value="{{ old('age') }}">
-            @error('age')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
-
-        <div class="mb-3 position-relative">
-            <label for="password" class="form-label">Password</label>
-            <div class="input-group">
-                <input type="password" name="password" id="password"
-                    class="password form-control @error('password') is-invalid @enderror"
-                    value="{{ old('password') }}">
-                <span class="input-group-text" id="togglePassword" style="cursor: pointer;">
-                    <i class="bi password-toggle bi-eye"></i>
-                </span>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
+                @error('email')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
-            @error('password')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
 
-        <button type="submit" class="btn btn-success">
-            <i class="bi bi-check-lg"></i> Save
-        </button>
-        <a href="{{ route('admin.page.index') }}" class="btn btn-secondary">Cancel</a>
-    </form>
-</div>
 
+            <div class="mb-3">
+                <label for="age" class="form-label">Age</label>
+                <input
+                    type="number" name="age" id="age" class="form-control @error('age') is-invalid @enderror" value="{{ old('age') }}">
+                @error('age')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3 position-relative">
+                <label for="password" class="form-label">Password</label>
+                <div class="input-group">
+                    <input type="password" name="password" id="password"
+                        class="password form-control @error('password') is-invalid @enderror"
+                        value="{{ old('password') }}">
+                    <span class="input-group-text" id="togglePassword" style="cursor: pointer;">
+                        <i class="bi password-toggle bi-eye"></i>
+                    </span>
+                </div>
+                @error('password')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <button type="submit" class="btn btn-success">
+                <i class="bi bi-check-lg"></i> Save
+            </button>
+            <a href="{{ route('admin.page.index') }}" class="btn btn-secondary">Cancel</a>
+        </form>
+     
+    </div>
+
+</body>
 
 </html>
 @endsection
