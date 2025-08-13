@@ -26,9 +26,9 @@ Route::prefix('admin/page')
         Route::get('/', [UserController::class, 'index']) ->name('index');
         Route::get('/create', [UserController::class, 'create']) ->name('create');
         Route::post('/', [UserController::class, 'store']) ->name('store');
-        Route::get('/{userId}', 'edit')->name('edit');
-        Route::put('/{userId}', 'update')->name('update');
-        Route::delete('/{userId}', 'delete')->name('delete');
+        Route::get('/{id}', 'edit')->name('edit');
+        Route::put('/{id}', 'update')->name('update');
+        Route::delete('/{id}', 'destroy')->name('destroy');
     });
 
 

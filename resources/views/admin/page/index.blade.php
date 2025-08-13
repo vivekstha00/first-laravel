@@ -18,6 +18,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Age</th>
+                    <th>Created Date</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -28,9 +29,18 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->age }}</td>
+                        <td>{{ $user->created_at->format('Y-m-d') }}</td>
                         <td>
-                            <a href="{{ route('admin.page.edit', $user->id) }}"><i class="bi bi-pencil"></i></a>
-                            <i class="bi bi-trash"></i>
+                            <a href="{{ route('admin.page.edit', $user->id) }}" class="btn btn-sm btn-primary">
+                                <i class="bi bi-pencil"></i> Edit
+                            </a>
+                            <form action="{{ route('admin.page.destroy', $user->id) }}" method="POST" style="display: inline-block;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this user?')">
+                                    <i class="bi bi-trash"></i> Delete
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach 
