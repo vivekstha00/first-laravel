@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\DashboardController;
 
 Route::get('/', [HomeController::class, 'index']) ->name('home');
+Route::get('/register', [HomeController::class, 'showRegister']) ->name('register');
+Route::get('/login', [HomeController::class, 'showLogin']) ->name('login');
 
 Route::get('/blogs', [BlogsController::class, 'index']) ->name('blogs');
 Route::get('/car', [CarController::class, 'index']) ->name('car');

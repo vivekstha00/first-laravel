@@ -24,13 +24,16 @@
                     </li>
                 </ul>
                 <div>
-                    <button class="btn btn-outline-light me-2" style="min-width: 84px!important;"type="button">
-                        Login
-                    </button>
-                    <button class="btn btn-outline-light me-2" style="min-width: 84px!important;"type="button">
-                        Sign Up
-                    </button>
-
+                    <a href="{{ route('login') }}">
+                        <button class="btn btn-outline-light me-2" style="min-width: 84px!important;" type="button">
+                            Login
+                        </button>
+                    </a>
+                    <a href="{{ route('register') }}">
+                        <button class="btn btn-outline-light me-2" style="min-width: 84px!important;" type="button">
+                            Sign Up
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
