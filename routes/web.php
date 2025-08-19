@@ -30,7 +30,7 @@ Route::prefix('admin/page')
         Route::post('/', [UserController::class, 'store']) ->name('store');
         Route::get('/{id}', 'edit')->name('edit');
         Route::put('/{id}', 'update')->name('update');
-        Route::delete('/{id}', 'destroy')->name('destroy');
+        Route::delete('/{id}', 'delete')->name('delete');
     });
 
 

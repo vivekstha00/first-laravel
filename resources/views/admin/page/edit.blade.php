@@ -25,11 +25,6 @@
             <input type="number" class="form-control" id="age" name="age" value="{{ old('age', $user->age) }}" required>
         </div>
         
-        <div class="mb-3">
-            <label for="password" class="form-label">Password (Leave blank to keep current)</label>
-            <input type="password" class="form-control" id="password" name="password">
-        </div>
-        
         <button type="submit" class="btn btn-primary">Update User</button>
         <a href="{{ route('admin.page.index') }}" class="btn btn-secondary">Cancel</a>
     </form>

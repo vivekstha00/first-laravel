@@ -5,6 +5,10 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeEmail;
+use Illuminate\Support\Facades\Log;
+use Throwable;
 
 class UserController extends Controller
 {
@@ -21,24 +25,39 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'age' => 'required|numeric',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6',
-        ]);
+        try {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'age' => 'required|numeric',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required|min:6',
+            ]);
 
-        if ($validator->fails()) {
-            flash()->warning('Please check your form and try again.');
-            return redirect()->back()
-                ->withInput($request->input())
-                ->withErrors($validator->errors());
+            if ($validator->fails()) {
+                flash()->warning('Please check your form and try again.');
+                return redirect()->back()
+                    ->withInput($request->input())
+                    ->withErrors($validator->errors());
+            }
+
+            User::create($request->all());
+
+            try {
+                Mail::to($request->email)->send(new WelcomeEmail([
+                    'name' => $request->name,
+                ]));
+            } catch (Throwable $th) {
+                Log::debug('Error while sending email.');
+            }
+
+            flash()->success('Operation completed successfully.');
+            return redirect()->route('admin.page.index');
+        } catch (Throwable $th) {
+            flash()->error('Operation failed.');
+            return redirect()->route('admin.page.index');
         }
-
-        User::create($request->all());
-        flash()->success('Operation completed successfully.');
-        return redirect()->route('admin.page.index');
     }
+
     
     public function edit($id)
     {
@@ -46,13 +65,12 @@ class UserController extends Controller
         return view('admin.page.edit', compact('user'));
     }
 
-    public function update(Request $request, $id)
+    public function update($id, Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'age' => 'required|numeric',
             'email' => 'required|email|unique:users,email,'.$id,
-            'password' => 'nullable|min:6',
         ]);
 
         if ($validator->fails()) {
@@ -65,20 +83,14 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $data = $request->all();
         
-        // Only update password if it's provided
-        if(empty($data['password'])) {
-            unset($data['password']);
-        }
-
         $user->update($data);
         flash()->success('User updated successfully.');
         return redirect()->route('admin.page.index');
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
+        User::where('id', $id)->delete();
         flash()->success('User deleted successfully.');
         return redirect()->route('admin.page.index');
     }

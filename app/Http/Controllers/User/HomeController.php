@@ -11,6 +11,14 @@ class HomeController extends Controller
     {
         return view('web.page.home');
     } 
-       
-    
+    public function showRegister()
+    {
+        return view('web.page.register');
+    }
+
+    public function showLogin()
+    {
+        return view('web.page.login');
+    }
+
 }
