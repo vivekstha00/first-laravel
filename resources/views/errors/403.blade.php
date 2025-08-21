@@ -29,7 +29,7 @@
                             </p>
 
                             <div class="d-flex gap-2 justify-content-center mt-3">
-                                <a href="/" class="btn btn-primary">Go Home</a>
+                                <a href="{{ route('admin.login.index') }}" class="btn btn-primary">Go Home</a>
                                 <button type="button" class="btn btn-outline-secondary" onclick="history.back()">Go Back</button>
                             </div>
 

@@ -17,7 +17,8 @@ class UserMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::check()) {
-            return redirect()->route('admin.login.index');
+            // return redirect()->route('admin.login.index');
+            abort(403);
         }
         return $next($request);
     }
