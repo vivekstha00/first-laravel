@@ -3,6 +3,9 @@
     <a class="navbar-brand" href="#">My Admin</a>
     <div class="ms-auto d-flex align-items-center text-white">
         <span class="me-3">Hi, <strong>{{ Auth::user()->name ?? 'Guest' }}</strong></span>
-        <a href="" class="btn btn-outline-light btn-sm">Logout</a>
+        <form method="POST" action="{{ route('admin.logout') }}" style="display: inline;">
+            @csrf
+            <button type="submit" class="btn btn-outline-light btn-sm">Logout</button>
+        </form>
     </div>
 </nav>

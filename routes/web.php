@@ -26,6 +26,7 @@ Route::prefix('admin')->as('admin.')->group(function () {
     Route::controller(LoginController::class)->group(function () {
         Route::get('/login', 'index')->name('login.index');
         Route::post('/login', 'check')->name('login.check');
+        Route::post('/logout', 'logout')->name('logout');
     });
 });
 

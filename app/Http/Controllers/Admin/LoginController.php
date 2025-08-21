@@ -62,4 +62,13 @@ class LoginController extends Controller
         }
         return redirect()->route('admin.login.index');
     }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        
+        toastr()->success('You have been logged out successfully.');
+        return redirect()->route('admin.login.index');
+    }
 }
