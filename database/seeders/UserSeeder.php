@@ -21,10 +21,12 @@ class UserSeeder extends Seeder
                 [
                 'name' => 'User ' . $i,   
                 'password' => Hash::make('password'),
-
+                'age' => rand(18, 60),
+                'role' => 'user',
 
                 ]
             );
         } 
+        
     }
 }

@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $totalUsersCount = User::where('role', 'user')->count();
+        $totalUsersCount = User::where('role', 'user')->orWhereNull('role')->count();
         $totalAdminsCount = User::where('role', 'admin')->count();
 
         $statistics = [
