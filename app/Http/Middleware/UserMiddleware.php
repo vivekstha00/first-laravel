@@ -20,6 +20,14 @@ class UserMiddleware
             // return redirect()->route('admin.login.index');
             abort(403);
         }
+        // Check if user is not an admin
+        if (Auth::user()->role !== 'admin') {
+            Auth::logout(); // Logout non-admin users
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            toastr()->error('Access denied. Admin privileges required.');
+            return redirect()->route('admin.login.index');
+        }
         return $next($request);
     }
 }
