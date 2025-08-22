@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\WelcomeMail;
+use App\Mail\WelcomeEmail;
 use Illuminate\Support\Facades\Log;
 use Throwable;
 
